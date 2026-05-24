@@ -1,0 +1,151 @@
+﻿{
+    "taskDefinitionArn":  "arn:aws:ecs:us-east-1:212902439809:task-definition/hotel-task:4",
+    "containerDefinitions":  [
+                                 {
+                                     "name":  "hotel-app-container",
+                                     "image":  "212902439809.dkr.ecr.us-east-1.amazonaws.com/hotel-booking-app:latest",
+                                     "cpu":  0,
+                                     "portMappings":  [
+                                                          {
+                                                              "containerPort":  8080,
+                                                              "hostPort":  8080,
+                                                              "protocol":  "tcp",
+                                                              "name":  "http-8080",
+                                                              "appProtocol":  "http"
+                                                          }
+                                                      ],
+                                     "essential":  true,
+                                     "environment":  [
+                                                         {
+                                                             "name":  "PORT",
+                                                             "value":  "8080"
+                                                         },
+                                                         {
+                                                             "name":  "MYSQL_HOST",
+                                                             "value":  "hotel-booking-db.cjxl2trtz9cr.us-east-1.rds.amazonaws.com"
+                                                         },
+                                                         {
+                                                             "name":  "SPRING_JPA_HIBERNATE_DDL_AUTO",
+                                                             "value":  "update"
+                                                         }
+                                                     ],
+                                     "environmentFiles":  [
+
+                                                          ],
+                                     "mountPoints":  [
+
+                                                     ],
+                                     "volumesFrom":  [
+
+                                                     ],
+                                     "secrets":  [
+                                                     {
+                                                         "name":  "EMAIL_PASSWORD",
+                                                         "valueFrom":  "arn:aws:secretsmanager:us-east-1:212902439809:secret:database-secret-tvOq2c:EMAIL_PASSWORD::"
+                                                     },
+                                                     {
+                                                         "name":  "GOOGLE_CLIENT_ID",
+                                                         "valueFrom":  "arn:aws:secretsmanager:us-east-1:212902439809:secret:database-secret-tvOq2c:GOOGLE_CLIENT_ID::"
+                                                     },
+                                                     {
+                                                         "name":  "GOOGLE_CLIENT_SECRET",
+                                                         "valueFrom":  "arn:aws:secretsmanager:us-east-1:212902439809:secret:database-secret-tvOq2c:GOOGLE_CLIENT_SECRET::"
+                                                     },
+                                                     {
+                                                         "name":  "SPRING_DATASOURCE_PASSWORD",
+                                                         "valueFrom":  "arn:aws:secretsmanager:us-east-1:212902439809:secret:database-secret-tvOq2c:password::"
+                                                     },
+                                                     {
+                                                         "name":  "SPRING_DATASOURCE_USERNAME",
+                                                         "valueFrom":  "arn:aws:secretsmanager:us-east-1:212902439809:secret:database-secret-tvOq2c:username::"
+                                                     },
+                                                     {
+                                                         "name":  "JWT_SECRET",
+                                                         "valueFrom":  "arn:aws:secretsmanager:us-east-1:212902439809:secret:database-secret-tvOq2c:JWT_SECRET::"
+                                                     }
+                                                 ],
+                                     "ulimits":  [
+
+                                                 ],
+                                     "logConfiguration":  {
+                                                              "logDriver":  "awslogs",
+                                                              "options":  {
+                                                                              "awslogs-group":  "/ecs/hotel-task",
+                                                                              "awslogs-create-group":  "true",
+                                                                              "awslogs-region":  "us-east-1",
+                                                                              "awslogs-stream-prefix":  "ecs"
+                                                                          },
+                                                              "secretOptions":  [
+
+                                                                                ]
+                                                          },
+                                     "systemControls":  [
+
+                                                        ]
+                                 }
+                             ],
+    "family":  "hotel-task",
+    "taskRoleArn":  "arn:aws:iam::212902439809:role/LabRole",
+    "executionRoleArn":  "arn:aws:iam::212902439809:role/LabRole",
+    "networkMode":  "awsvpc",
+    "revision":  4,
+    "volumes":  [
+
+                ],
+    "status":  "ACTIVE",
+    "requiresAttributes":  [
+                               {
+                                   "name":  "com.amazonaws.ecs.capability.logging-driver.awslogs"
+                               },
+                               {
+                                   "name":  "ecs.capability.execution-role-awslogs"
+                               },
+                               {
+                                   "name":  "com.amazonaws.ecs.capability.ecr-auth"
+                               },
+                               {
+                                   "name":  "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+                               },
+                               {
+                                   "name":  "ecs.capability.secrets.asm.environment-variables"
+                               },
+                               {
+                                   "name":  "com.amazonaws.ecs.capability.task-iam-role"
+                               },
+                               {
+                                   "name":  "ecs.capability.execution-role-ecr-pull"
+                               },
+                               {
+                                   "name":  "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+                               },
+                               {
+                                   "name":  "ecs.capability.task-eni"
+                               },
+                               {
+                                   "name":  "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+                               }
+                           ],
+    "placementConstraints":  [
+
+                             ],
+    "compatibilities":  [
+                            "EC2",
+                            "FARGATE",
+                            "MANAGED_INSTANCES"
+                        ],
+    "runtimePlatform":  {
+                            "cpuArchitecture":  "X86_64",
+                            "operatingSystemFamily":  "LINUX"
+                        },
+    "requiresCompatibilities":  [
+                                    "FARGATE"
+                                ],
+    "cpu":  "512",
+    "memory":  "1024",
+    "registeredAt":  "2026-05-22T07:51:24.134Z",
+    "registeredBy":  "arn:aws:sts::212902439809:assumed-role/voclabs/user4788355=Ramez_Michel",
+    "enableFaultInjection":  false,
+    "tags":  [
+
+             ]
+}
