@@ -7,7 +7,7 @@ on:
 env:
   AWS_REGION: us-east-1
   ECR_REPOSITORY: hotel-booking-app
-  ECS_SERVICE: hotel-task-service-6e4zld6a
+  ECS_SERVICE: hotel-task-service-tqtpvfq1
   ECS_CLUSTER: hotels-booking-cluster1
   ECS_TASK_DEFINITION: task-definition.json
   CONTAINER_NAME: hotel-app-container
